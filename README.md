@@ -1,2 +1,2 @@
 # SwordOffer
-剑指Offer1全部题解
+剑指Offer全部题解
