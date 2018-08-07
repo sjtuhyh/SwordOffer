@@ -21,8 +21,27 @@ public class Test31 {
         return res;
     }
 
-    public int NumberOf1Between1AndN_Solution2(int n) {
 
-        ///////
+    //参考链接：http://wangwlj.com/2018/03/06/coding_offer32_1toN/
+    public int NumberOf1Between1AndN_Solution2(int n) {
+        int res = 0;
+        int i = 1; //当前位
+        int before = 0;
+        int current = 0;
+        int after = 0;
+        while ((n / i) != 0) {
+            before = n/(i*10);
+            current = (n/i)%10;
+            after = n%i;
+            if (current == 0) {
+                res += before*i;
+            } else if (current == 1) {
+                res += before*i + after+1;
+            } else {
+                res += (before+1)*i;
+            }
+            i*=10;
+        }
+        return res;
     }
 }
