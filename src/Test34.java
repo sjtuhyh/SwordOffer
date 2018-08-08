@@ -6,6 +6,16 @@
  */
 public class Test34 {
     public int FirstNotRepeatingChar(String str) {
-        return 0;
+        int[] record = new int[256];
+        for (char c : str.toCharArray()) {
+            record[c]++;
+        }
+
+        for (int i = 0; i<str.length(); i++) {
+            if (record[str.charAt(i)] == 1) {
+                return i;
+            }
+        }
+        return -1;
     }
 }
