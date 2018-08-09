@@ -1,3 +1,5 @@
+import java.math.BigInteger;
+
 /*
 数组中的逆序对
 
@@ -22,6 +24,17 @@
  */
 public class Test35 {
     public int InversePairs(int [] array) {
-
+        if (array == null || array.length < 2)
+            return 0;
+        return InversePairs(array, 0, array.length-1);
     }
+
+    private int InversePairs(int[] array, int l, int r) {
+        if (l < r) {
+            int mid = l + ((r-l)>>1);
+
+        }
+    }
+
+
 }
