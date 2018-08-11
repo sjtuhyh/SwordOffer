@@ -8,6 +8,36 @@
  */
 public class Test44 {
     public String ReverseSentence(String str) {
-
+        if (str == null || str.length() < 2)
+            return str;
+        char[] c = str.toCharArray();
+        reverse(c, 0, c.length-1);
+        int l = 0;
+        int r = 0;
+        while (l < c.length) {
+            if (c[l] == ' ') {
+                l++;
+                r++;
+            } else if (r == c.length || c[r] == ' ') {
+                reverse(c, l, r-1);
+                r++;
+                l = r;
+            } else {
+                r++;
+            }
+        }
+        return String.valueOf(c);
     }
+
+    private void reverse(char[] c, int l, int r) {
+        char tmp;
+        while (l < r) {
+            tmp = c[l];
+            c[l] = c[r];
+            c[r] = tmp;
+            l++;
+            r--;
+        }
+    }
+
 }
