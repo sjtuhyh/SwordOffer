@@ -1,44 +1,35 @@
+/*
+55. 跳跃游戏
+
+给定一个非负整数数组，你最初位于数组的第一个位置。
+
+数组中的每个元素代表你在该位置可以跳跃的最大长度。
+
+判断你是否能够到达最后一个位置。
+
+示例 1:
+
+输入: [2,3,1,1,4]
+输出: true
+解释: 从位置 0 到 1 跳 1 步, 然后跳 3 步到达最后一个位置。
+示例 2:
+
+输入: [3,2,1,0,4]
+输出: false
+解释: 无论怎样，你总会到达索引为 3 的位置。但该位置的最大跳跃长度是 0 ， 所以你永远不可能到达最后一个位置。
+ */
 public class Main {
-
-    private static int count = 0;
-    public static void mergeSort(int[] arr) {
-        if (arr == null || arr.length < 2)
-            return;
-        mergeSort(arr, 0, arr.length-1);
-    }
-
-    private static void mergeSort(int[] arr, int l, int r) {
-        if (l == r)
-            return;
-        int mid = l + (r-l)>>1;
-        mergeSort(arr, l, mid);
-        mergeSort(arr, mid+1, r);
-        merge(arr, l, mid, r);
-    }
-
-    private static void merge(int[] arr, int l, int mid, int r) {
-        int[] help = new int[r-l+1];
-        int p1 = l;
-        int p2 = mid+1;
-        int i = 0;
-        while (p1 <= mid && p2 <= r) {
-            if (arr[p1] > arr[p2]) {
-                help[i++] = arr[p2++];
-            } else {
-                help[i++] = arr[p1++];
+    public boolean canJump(int[] nums) {
+        if (nums.length == 1) {
+            return true;
+        }
+        int maxreach = 0;
+        for (int i = 0; i<nums.length && i <=maxreach; i++) {
+            maxreach = Math.max(maxreach, i+nums[i]);
+            if (maxreach >= nums.length-1) {
+                return true;
             }
         }
-        while (p1 <= mid) {
-            help[i++] = arr[p1++];
-        }
-        while (p2 <= r) {
-            help[i++] = arr[p2++];
-        }
-
-        for (int k = 0; k<help.length; k++) {
-            arr[k+l] = help[k];
-        }
+        return false;
     }
-
-
 }
